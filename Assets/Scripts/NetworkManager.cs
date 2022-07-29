@@ -16,6 +16,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         // Instantiate the player
         networkPlayer = PhotonNetwork.Instantiate("NetworkPlayer", spawnPoint.position, Quaternion.identity);
         networkPlayer.GetComponent<NetworkPlayer>().SetNickName(PhotonNetwork.NickName);
+
+        // ping checker
+        InvokeRepeating("CheckPing", 1, 3);
     }
 
     public override void OnJoinedRoom()
@@ -53,6 +56,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
     }
 
-
+    void CheckPing()
+    {
+        Logger.Log("PING : " + PhotonNetwork.GetPing());
+    }
 
 }

@@ -26,6 +26,10 @@ public class NetworkPlayer : MonoBehaviour
                 child.enabled = false;
             }
         }
+        else
+        {
+            SetNickName(photonView.Owner.NickName);
+        }
     }
 
     void Update()

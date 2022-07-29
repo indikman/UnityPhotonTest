@@ -44,6 +44,7 @@ public class Logger : MonoBehaviour
 
     private void LOG(string text)
     {
+        logString = "";
         if(logData.Count > maxLines)
         {
             logData.Dequeue();
